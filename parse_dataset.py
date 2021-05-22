@@ -31,6 +31,7 @@ def get_dataset_files(data_dir, data_ext, celeb_ids, split):
         for filename in filenames:
             if filename.endswith(data_ext):
                 filepath = os.path.join(root, filename)
+                filepath = filepath.replace("\\","/")
                 # so hacky, be careful! 
                 folder = filepath[len(data_dir):].split('/')[1]
                 celeb_name = celeb_ids.get(folder, folder)

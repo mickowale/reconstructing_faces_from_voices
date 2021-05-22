@@ -32,7 +32,7 @@ face_loader = DataLoader(face_dataset, shuffle=True, drop_last=True,
 
 voice_iterator = iter(cycle(voice_loader))
 face_iterator = iter(cycle(face_loader))
-
+next(voice_iterator)
 # networks, Fe, Fg, Fd (f+d), Fc (f+c)
 print('Initializing networks...')
 e_net, e_optimizer = get_network('e', NETWORKS_PARAMETERS, train=False)
@@ -42,8 +42,8 @@ d_net, d_optimizer = get_network('d', NETWORKS_PARAMETERS, train=True)
 c_net, c_optimizer = get_network('c', NETWORKS_PARAMETERS, train=True)
 
 # label for real/fake faces
-real_label = torch.full((DATASET_PARAMETERS['batch_size'], 1), 1)
-fake_label = torch.full((DATASET_PARAMETERS['batch_size'], 1), 0)
+real_label = torch.full((DATASET_PARAMETERS['batch_size'], 1), 1,dtype = torch.uint8)
+fake_label = torch.full((DATASET_PARAMETERS['batch_size'], 1), 0,dtype = torch.uint8)
 
 # Meters for recording the training status
 iteration = Meter('Iter', 'sum', ':5d')
@@ -126,4 +126,7 @@ for it in range(50000):
         # snapshot
         save_model(g_net, NETWORKS_PARAMETERS['g']['model_path'])
     iteration.update(1)
+    torch.multiprocessing.freeze_support()
+    print('loop')
+
 

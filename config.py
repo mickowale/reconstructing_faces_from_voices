@@ -17,12 +17,12 @@ DATASET_PARAMETERS = {
 
     # train data includes the identities
     # whose names start with the characters of 'FGH...XYZ' 
-    'split': string.ascii_uppercase[5:],
+    'split': string.ascii_uppercase[:],
 
     # dataloader
     'voice_dataset': VoiceDataset,
     'face_dataset': FaceDataset,
-    'batch_size': 128,
+    'batch_size': 2,
     'nframe_range': [300, 800],
     'workers_num': 1,
     'collate_fn': get_collate_fn,
