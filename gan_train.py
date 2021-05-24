@@ -126,7 +126,6 @@ for it in range(50000):
         # snapshot
         save_model(g_net, NETWORKS_PARAMETERS['g']['model_path'])
     iteration.update(1)
-    torch.multiprocessing.freeze_support()
-    print('loop')
+    
 
 

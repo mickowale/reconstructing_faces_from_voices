@@ -33,6 +33,7 @@ def get_dataset_files(data_dir, data_ext, celeb_ids, split):
                 filepath = os.path.join(root, filename)
                 filepath = filepath.replace("\\","/")
                 # so hacky, be careful! 
+                print(filepath)
                 folder = filepath[len(data_dir):].split('/')[1]
                 celeb_name = celeb_ids.get(folder, folder)
                 if celeb_name.startswith(tuple(split)):

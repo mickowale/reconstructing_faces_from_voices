@@ -28,7 +28,7 @@ DATASET_PARAMETERS = {
     'collate_fn': get_collate_fn,
 
     # test data
-    'test_data': 'data/test_data/'
+    'test_data': 'data/example-data/'
 }
 
 
